@@ -22,19 +22,18 @@
 
 ## Download Software
 
-1. Download [CentOS 8 x86_64 image](https://www.centos.org/centos-linux/)
+1. Download [CentOS 8 x86_64 image](https://www.centos.org/centos-linux/) (建議 Bastion OS 用 Redhat 比較好 有 Support)
 1. Login to [RedHat OpenShift Cluster Manager](https://cloud.redhat.com/openshift)
 1. Select 'Create Cluster' from the 'Clusters' navigation menu
 1. Select 'RedHat OpenShift Container Platform'
 1. Select 'Run on Bare Metal'
 1. Download the following files:
 
-   - Openshift Installer for Linux
+   - [Openshift Installer for Linux (4.10.42)](https://access.redhat.com/downloads/content/290/ver=4.10/rhel---8/4.10.42/x86_64/product-software)
    - Pull secret
-   - Command Line Interface for Linux and your workstations OS
-   - Red Hat Enterprise Linux CoreOS (RHCOS)
-     - rhcos-X.X.X-x86_64-metal.x86_64.raw.gz
-     - rhcos-X.X.X-x86_64-installer.x86_64.iso (or rhcos-X.X.X-x86_64-live.x86_64.iso for newer versions)
+   - [Command Line Interface for Linux and your workstations OS (4.10.42)](https://access.redhat.com/downloads/content/290/ver=4.10/rhel---8/4.10.42/x86_64/product-software)
+   - [Red Hat Enterprise Linux CoreOS (RHCOS) (4.10.25)](https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.10/4.10.25/)
+     - rhcos-4.10.25-x86_64-live.x86_64.iso
 
 ## Prepare the 'Bare Metal' environment
 
