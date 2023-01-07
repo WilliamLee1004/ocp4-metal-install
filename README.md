@@ -15,6 +15,7 @@
   - [Create the first Admin user](#create-the-first-admin-user)
   - [Access the OpenShift Console](#access-the-openshift-console)
   - [Troubleshooting](#troubleshooting)
+  - [YouTube](https://www.youtube.com/watch?v=d03xg2PKOPg&ab_channel=RyanHay)
 
 ## Architecture Diagram
 
@@ -27,13 +28,13 @@
 1. Select 'Create Cluster' from the 'Clusters' navigation menu
 1. Select 'RedHat OpenShift Container Platform'
 1. Select 'Run on Bare Metal'
-1. Download the following files:
+1. Download the following files: (注意不要用太新的版本 )
 
    - [Openshift Installer for Linux (4.10.42)](https://access.redhat.com/downloads/content/290/ver=4.10/rhel---8/4.10.42/x86_64/product-software)
    - Pull secret
    - [Command Line Interface for Linux and your workstations OS (4.10.42)](https://access.redhat.com/downloads/content/290/ver=4.10/rhel---8/4.10.42/x86_64/product-software)
    - [Red Hat Enterprise Linux CoreOS (RHCOS) (4.10.25)](https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.10/4.10.25/)
-     - rhcos-4.10.25-x86_64-live.x86_64.iso
+     - ㄏ
 
 ## Prepare the 'Bare Metal' environment
 
@@ -46,30 +47,30 @@
 1. Create 3 Control Plane virtual machines with minimum settings:
    - Name: ocp-cp-# (Example ocp-cp-1)
    - 4vcpu
-   - 8GB RAM
-   - 50GB HDD
+   - 16GB RAM
+   - 100GB HDD
    - NIC connected to the OCP network
-   - Load the rhcos-X.X.X-x86_64-installer.x86_64.iso image into the CD/DVD drive
+   - Load the rhcos-4.10.25-x86_64-live.x86_64.iso image into the CD/DVD drive
 1. Create 2 Worker virtual machines (or more if you want) with minimum settings:
    - Name: ocp-w-# (Example ocp-w-1)
    - 4vcpu
-   - 8GB RAM
-   - 50GB HDD
+   - 16GB RAM
+   - 100GB HDD
    - NIC connected to the OCP network
-   - Load the rhcos-X.X.X-x86_64-installer.x86_64.iso image into the CD/DVD drive
+   - Load the rhcos-4.10.25-x86_64-live.x86_64.iso image into the CD/DVD drive
 1. Create a Bootstrap virtual machine (this vm will be deleted once installation completes) with minimum settings:
    - Name: ocp-boostrap
    - 4vcpu
-   - 8GB RAM
-   - 50GB HDD
+   - 16GB RAM
+   - 100GB HDD
    - NIC connected to the OCP network
-   - Load the rhcos-X.X.X-x86_64-installer.x86_64.iso image into the CD/DVD drive
+   - Load the rhcos-4.10.25-x86_64-live.x86_64.iso image into the CD/DVD drive
 1. Create a Services virtual machine with minimum settings:
    - Name: ocp-svc
    - 4vcpu
-   - 4GB RAM
-   - 120GB HDD
-   - NIC1 connected to the VM Network (LAN)
+   - 16GB RAM
+   - 100GB HDD
+   - NIC1 connected to the External Network (WAN)
    - NIC2 connected to the OCP network
    - Load the CentOS_8.iso image into the CD/DVD drive
 1. Boot all virtual machines so they each are assigned a MAC address
@@ -89,7 +90,7 @@
 1. Move the files downloaded from the RedHat Cluster Manager site to the ocp-svc node
 
    ```bash
-   scp ~/Downloads/openshift-install-linux.tar.gz ~/Downloads/openshift-client-linux.tar.gz ~/Downloads/rhcos-metal.x86_64.raw.gz root@{ocp-svc_IP_address}:/root/
+   scp ~/Downloads/openshift-install-linux.tar.gz ~/Downloads/openshift-client-linux.tar.gz  root@{ocp-svc_IP_address}:/root/
    ```
 
 1. SSH to the ocp-svc vm
@@ -102,7 +103,7 @@
 
    ```bash
    tar xvf openshift-client-linux.tar.gz
-   mv oc kubectl /usr/local/bin
+   mv oc kubectl /usr/bin
    ```
 
 1. Confirm Client Tools are working
@@ -259,7 +260,7 @@
    dig -x 192.168.22.200
    ```
 
-1. Install & configure DHCP
+1. OPTIONAL : Install & configure DHCP
 
    Install the DHCP Server
 
@@ -485,6 +486,9 @@
 1. Power on the ocp-bootstrap host and ocp-cp-\# hosts and select 'Tab' to enter boot configuration. Enter the following configuration:
 
    ```bash
+   # Config IP address
+   mncli
+   
    # Bootstrap Node - ocp-bootstrap
    coreos.inst.install_dev=sda coreos.inst.image_url=http://192.168.22.1:8080/ocp4/rhcos coreos.inst.insecure=yes coreos.inst.ignition_url=http://192.168.22.1:8080/ocp4/bootstrap.ign
    
@@ -493,6 +497,9 @@
    ```
 
    ```bash
+   # Config IP address
+   nmcli
+   
    # Each of the Control Plane Nodes - ocp-cp-\#
    coreos.inst.install_dev=sda coreos.inst.image_url=http://192.168.22.1:8080/ocp4/rhcos coreos.inst.insecure=yes coreos.inst.ignition_url=http://192.168.22.1:8080/ocp4/master.ign
    
@@ -503,6 +510,9 @@
 1. Power on the ocp-w-\# hosts and select 'Tab' to enter boot configuration. Enter the following configuration:
 
    ```bash
+   # Config IP address
+   nmcli
+   
    # Each of the Worker Nodes - ocp-w-\#
    coreos.inst.install_dev=sda coreos.inst.image_url=http://192.168.22.1:8080/ocp4/rhcos coreos.inst.insecure=yes coreos.inst.ignition_url=http://192.168.22.1:8080/ocp4/worker.ign
    
