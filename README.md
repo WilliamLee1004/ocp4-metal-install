@@ -28,7 +28,7 @@
 1. Select 'Create Cluster' from the 'Clusters' navigation menu
 1. Select 'RedHat OpenShift Container Platform'
 1. Select 'Run on Bare Metal'
-1. Download the following files: (注意不要用太新的版本 )
+1. Download the following files: (注意不要用太新的版本 如果要使用較新版本請先確定相容性)
 
    - [Openshift Installer for Linux (4.10.42)](https://access.redhat.com/downloads/content/290/ver=4.10/rhel---8/4.10.42/x86_64/product-software)
    - Pull secret
@@ -552,6 +552,7 @@
    ```bash
    ~/openshift-install --dir ~/ocp-install wait-for install-complete
    ```
+> IMPORTANT: 下完上述指令後請馬上 Join Worker Node 否則很有可能會出現 Error
 
 1. Continue to join the worker nodes to the cluster in a new tab whilst waiting for the above command to complete
 
@@ -686,3 +687,10 @@
    ```bash
    oc edit schedulers.config.openshift.io cluster
    ```
+   
+   ## Troubleshooting
+   
+   1. [YouTube](https://www.youtube.com/watch?v=d03xg2PKOPg&ab_channel=RyanHay)
+   2. [OpenShift 容器平台社区版 OKD 4.10.0部署](https://blog.csdn.net/networken/article/details/123953256)
+   3. [Preparing to install on vSphere](https://docs.openshift.com/container-platform/4.10/installing/installing_vsphere/preparing-to-install-on-vsphere.html)
+
