@@ -493,7 +493,7 @@
    coreos.inst.install_dev=sda coreos.inst.image_url=http://192.168.22.1:8080/ocp4/rhcos coreos.inst.insecure=yes coreos.inst.ignition_url=http://192.168.22.1:8080/ocp4/bootstrap.ign
    
    # Or if you waited for it boot, use the following command then just reboot after it finishes and make sure you remove the attached .iso
-   sudo coreos-installer install /dev/sda -u http://192.168.22.1:8080/ocp4/rhcos -I http://192.168.22.1:8080/ocp4/bootstrap.ign --insecure --insecure-ignition
+   sudo coreos-installer install /dev/sda --ignition-url http://192.168.22.1:8080/ocp4/bootstrap.ign --insecure --insecure-ignition --copy-network
    ```
 
    ```bash
@@ -504,7 +504,7 @@
    coreos.inst.install_dev=sda coreos.inst.image_url=http://192.168.22.1:8080/ocp4/rhcos coreos.inst.insecure=yes coreos.inst.ignition_url=http://192.168.22.1:8080/ocp4/master.ign
    
    # Or if you waited for it boot, use the following command then just reboot after it finishes and make sure you remove the attached .iso
-   sudo coreos-installer install /dev/sda -u http://192.168.22.1:8080/ocp4/rhcos -I http://192.168.22.1:8080/ocp4/master.ign --insecure --insecure-ignition
+   sudo coreos-installer install /dev/sda --ignition-url http://192.168.22.1:8080/ocp4/master.ign --insecure --insecure-ignition --copy-network
    ```
 
 1. Power on the ocp-w-\# hosts and select 'Tab' to enter boot configuration. Enter the following configuration:
@@ -517,7 +517,7 @@
    coreos.inst.install_dev=sda coreos.inst.image_url=http://192.168.22.1:8080/ocp4/rhcos coreos.inst.insecure=yes coreos.inst.ignition_url=http://192.168.22.1:8080/ocp4/worker.ign
    
    # Or if you waited for it boot, use the following command then just reboot after it finishes and make sure you remove the attached .iso
-   sudo coreos-installer install /dev/sda -u http://192.168.22.1:8080/ocp4/rhcos -I http://192.168.22.1:8080/ocp4/worker.ign --insecure --insecure-ignition
+   sudo coreos-installer install /dev/sda --ignition-url http://192.168.22.1:8080/ocp4/worker.ign --insecure --insecure-ignition --copy-network
    ```
 
 ## Monitor the Bootstrap Process
