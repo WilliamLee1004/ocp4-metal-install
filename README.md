@@ -34,7 +34,7 @@
    - Pull secret
    - [Command Line Interface for Linux and your workstations OS (4.10.42)](https://access.redhat.com/downloads/content/290/ver=4.10/rhel---8/4.10.42/x86_64/product-software)
    - [Red Hat Enterprise Linux CoreOS (RHCOS) (4.10.25)](https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.10/4.10.25/)
-     - ㄏ
+    
 
 ## Prepare the 'Bare Metal' environment
 
