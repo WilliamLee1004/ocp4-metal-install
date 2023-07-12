@@ -90,7 +90,7 @@
 1. Move the files downloaded from the RedHat Cluster Manager site to the ocp-svc node
 
    ```bash
-   scp ~/Downloads/openshift-install-linux.tar.gz ~/Downloads/openshift-client-linux.tar.gz  root@{ocp-svc_IP_address}:/root/
+   scp ~/Downloads/openshift-install-linux-4.10.42.tar.gz ~/Downloads/oc-4.10.42-linux.tar.gz  root@{ocp-svc_IP_address}:/root/
    ```
 
 1. SSH to the ocp-svc vm
@@ -102,7 +102,7 @@
 1. Extract Client tools and copy them to `/usr/local/bin`
 
    ```bash
-   tar xvf openshift-client-linux.tar.gz
+   tar xvf oc-4.10.42-linux.tar.gz
    mv oc kubectl /usr/bin
    ```
 
@@ -116,7 +116,7 @@
 1. Extract the OpenShift Installer
 
    ```bash
-   tar xvf openshift-install-linux.tar.gz
+   tar xvf openshift-install-linux-4.10.42.tar.gz
    ```
 
 1. Update CentOS so we get the latest packages for each of the services we are about to install
@@ -238,7 +238,7 @@
    systemctl status named
    ```
 
-   > At the moment DNS will still be pointing to the LAN DNS server. You can see this by testing with `dig ocp.lan`.
+   > At the moment DNS will still be pointing to the LAN DNS server. You can see this by testing with `dig ocp.lan.`.
 
    Change the LAN nic (ens192) to use 127.0.0.1 for DNS AND ensure `Ignore automatically Obtained DNS parameters` is ticked
 
@@ -255,7 +255,7 @@
    Confirm dig now sees the correct DNS results by using the DNS Server running locally
 
    ```bash
-   dig ocp.lan
+   dig ocp.lan.
    # The following should return the answer ocp-bootstrap.lab.ocp.lan from the local server
    dig -x 192.168.22.200
    ```
