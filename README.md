@@ -260,7 +260,7 @@
    dig -x 192.168.22.200
    ```
 
-1. OPTIONAL : Install & configure DHCP
+1. OPTIONAL : Install & configure DHCP (可以先不用DHCP 後面用nmtui手動config ip)
 
    Install the DHCP Server
 
