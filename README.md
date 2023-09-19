@@ -363,6 +363,8 @@
    systemctl status haproxy
    ```
 
+   如果haproxy起不來就把/etc/httpd/conf.d/ssl.cfg裡面的443port都改成8443
+
 1. Install and configure NFS for the OpenShift Registry. It is a requirement to provide storage for the Registry, emptyDir can be specified if necessary.
 
    Install NFS Server
@@ -487,7 +489,7 @@
 
    ```bash
    # Config IP address
-   mncli
+   nmtui
    
    # Bootstrap Node - ocp-bootstrap
    coreos.inst.install_dev=sda coreos.inst.image_url=http://192.168.22.1:8080/ocp4/rhcos coreos.inst.insecure=yes coreos.inst.ignition_url=http://192.168.22.1:8080/ocp4/bootstrap.ign
@@ -498,7 +500,7 @@
 
    ```bash
    # Config IP address
-   nmcli
+   nmtui
    
    # Each of the Control Plane Nodes - ocp-cp-\#
    coreos.inst.install_dev=sda coreos.inst.image_url=http://192.168.22.1:8080/ocp4/rhcos coreos.inst.insecure=yes coreos.inst.ignition_url=http://192.168.22.1:8080/ocp4/master.ign
@@ -511,7 +513,7 @@
 
    ```bash
    # Config IP address
-   nmcli
+   nmtui
    
    # Each of the Worker Nodes - ocp-w-\#
    coreos.inst.install_dev=sda coreos.inst.image_url=http://192.168.22.1:8080/ocp4/rhcos coreos.inst.insecure=yes coreos.inst.ignition_url=http://192.168.22.1:8080/ocp4/worker.ign
