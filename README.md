@@ -413,6 +413,7 @@
    ```bash
    ssh-keygen
    ```
+P.S.補充說明 如果沒有自建私有倉庫就是internet install
 
 1. Create an install directory
 
@@ -435,7 +436,7 @@
    vim ~/ocp-install/install-config.yaml
    ```
 
-1. Generate Kubernetes manifest files
+1. Generate Kubernetes manifest files (manifest create後超過24小時會過期 如果超過24小時後要重裝要記得重新Create)
 
    ```bash
    ~/openshift-install create manifests --dir ~/ocp-install
